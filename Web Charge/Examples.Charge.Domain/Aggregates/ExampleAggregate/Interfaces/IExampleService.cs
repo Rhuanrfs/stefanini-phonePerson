@@ -8,5 +8,6 @@ namespace Examples.Charge.Domain.Aggregates.ExampleAggregate.Interfaces
     public interface IExampleService
     {
         Task<List<Example>> FindAllAsync();
+        Task<Example> FindID(int id);
     }
 }

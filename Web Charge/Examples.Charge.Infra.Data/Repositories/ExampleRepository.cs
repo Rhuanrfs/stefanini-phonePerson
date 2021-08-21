@@ -3,6 +3,7 @@ using Examples.Charge.Domain.Aggregates.ExampleAggregate.Interfaces;
 using Examples.Charge.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Examples.Charge.Infra.Data.Repositories
@@ -17,5 +18,6 @@ namespace Examples.Charge.Infra.Data.Repositories
         }
 
         public async Task<IEnumerable<Example>> FindAllAsync() => await Task.Run(() => _context.Example);
+        public async Task<Example> FindID(int id) => await Task.Run(() => _context.Example.FirstOrDefault(x=> x.Id == id));
     }
 }

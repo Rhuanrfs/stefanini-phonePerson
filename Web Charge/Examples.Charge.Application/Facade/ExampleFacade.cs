@@ -28,5 +28,15 @@ namespace Examples.Charge.Application.Facade
             response.ExampleObjects.AddRange(result.Select(x => _mapper.Map<ExampleDto>(x)));
             return response;
         }
+
+        public async Task<ExampleListResponse> FindID(int id)
+        {
+            var result = await _exampleService.FindID(id);
+            var response = new ExampleListResponse();
+            response.ExampleObjects = new List<ExampleDto>();
+            response.ExampleObjects.Add(new ExampleDto() { Id = result.Id, Nome = result.Nome });
+            return response;
+        }
+
     }
 }

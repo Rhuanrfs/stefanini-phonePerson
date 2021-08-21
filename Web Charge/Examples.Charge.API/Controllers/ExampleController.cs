@@ -4,6 +4,7 @@ using Examples.Charge.Application.Interfaces;
 using Examples.Charge.Application.Messages.Request;
 using Examples.Charge.Application.Messages.Response;
 using System.Threading.Tasks;
+using Examples.Charge.Application.Dtos;
 
 namespace Examples.Charge.API.Controllers
 {
@@ -22,9 +23,9 @@ namespace Examples.Charge.API.Controllers
         public async Task<ActionResult<ExampleListResponse>> Get() => Response(await _facade.FindAllAsync());
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<ActionResult<ExampleListResponse>> Get(int id)
         {
-            return Response(null);
+            return Response(await _facade.FindID(id));
         }
 
         [HttpPost]
